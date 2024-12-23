@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas</title>
+</head>
+<body>
+    <h1>Crear Pregunta</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/index" method="post">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required><br>
+
+        <label for="contenido">Contenido:</label>
+        <textarea id="contenido" name="contenido" required></textarea><br>
+
+        <input type="submit" value="Enviar Pregunta">
+    </form>
+
+    <h2>Preguntas</h2>
+    <ul>
+        {% for pregunta in preguntas %}
+            <li>
+                <strong>{{ pregunta.titulo }}</strong><br>
+                {{ pregunta.contenido }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
